@@ -16,11 +16,10 @@
             </li>
 
             <li class="nav-item">
-                <a class="nav-link" href="/user/profile">Edit Profile</a>
+                <a class="nav-link" href="profile">Edit Profile</a>
             </li>
 
         </ul>
-        <@l.login "/login"/>
         <@l.logout/>
     </div>
 </nav>

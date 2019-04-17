@@ -3,5 +3,5 @@
 
 <@c.commonspage>
     <@l.login "/login"/>
-    <a href="registration.ftl">Add User</a>
+    <a href="registration">Add User</a>
 </@c.commonspage>

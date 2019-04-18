@@ -15,39 +15,39 @@ import java.util.Collections;
 @Service
 public class UserService  implements UserDetailsService {
 
-/*    private final PasswordEncoder passwordEncoder;*/
+    private final PasswordEncoder passwordEncoder;
 
     private final UserRepository userRepository;
 
     @Autowired
-    public UserService(/*PasswordEncoder passwordEncoder,*/ UserRepository userRepository) {
-/*        this.passwordEncoder = passwordEncoder;*/
+    public UserService(PasswordEncoder passwordEncoder, UserRepository userRepository) {
+        this.passwordEncoder = passwordEncoder;
         this.userRepository = userRepository;
     }
 
-/*    public boolean addUser(User user){
-        User userFromDb = userRepository.findByEmail(user.getEmail());
+    public boolean addUser(User user){
+        User userFromDb = userRepository.findByUsername(user.getUsername());
 
         if(userFromDb != null){
             return false;
         }
 
         user.setRoles(Collections.singleton(Role.USER));
-        user.setPassword(passwordEncoder.encode(user.getPassword()));
+        /*user.setPassword(passwordEncoder.encode(user.getPassword()));*/
         user.setActive(false);
         userRepository.save(user);
 
         return true;
-    }*/
+    }
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        /*User user = */ return userRepository.findByUsername(username);
+        User user =  userRepository.findByUsername(username);
 
-//        if(user==null){
-//            throw new UsernameNotFoundException("User not found");
-//        }
+        if(user==null){
+            throw new UsernameNotFoundException("User not found");
+        }
 
-        /*return user;*/
+        return user;
     }
 }

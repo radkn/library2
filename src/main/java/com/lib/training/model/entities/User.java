@@ -1,8 +1,6 @@
 package com.lib.training.model.entities;
 
 import lombok.Data;
-import lombok.NonNull;
-import lombok.Value;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 

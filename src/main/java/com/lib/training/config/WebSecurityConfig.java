@@ -23,20 +23,17 @@ import javax.sql.DataSource;
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
-//
-//    @Autowired
-//    private DataSource dataSource;
 
     @Autowired
     private UserService userService;
-//
-//    @Autowired
-//    private PasswordEncoder passwordEncoder;
-//
-//    @Bean
-//    public PasswordEncoder getPasswordEncoder(){
-//        return new MessageDigestPasswordEncoder("MD5");
-//    }
+
+    @Autowired
+    private PasswordEncoder passwordEncoder;
+
+    @Bean
+    public PasswordEncoder getPasswordEncoder(){
+        return new MessageDigestPasswordEncoder("MD5");
+    }
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
@@ -58,30 +55,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.userDetailsService(userService).passwordEncoder(NoOpPasswordEncoder.getInstance()/*passwordEncoder*/);
-
-
-
-
-//        auth.jdbcAuthentication()
-//                .dataSource(dataSource)
-//                .passwordEncoder(NoOpPasswordEncoder.getInstance())
-//                .usersByUsernameQuery("SELECT username, password, active FROM user WHERE username=?")
-//                .authoritiesByUsernameQuery(
-//                        "SELECT u.username, ur.roles FROM user u INNER JOIN user_role ur ON u.id=ur.user_id WHERE u.username=?");
     }
 
-
-//    @Bean
-//    @Override
-//    public UserDetailsService userDetailsService(){
-//        UserDetails user = User.withDefaultPasswordEncoder()
-//                .username("u")
-//                .password("p")
-//                .roles("USER")
-//                .build();
-//
-//        return new InMemoryUserDetailsManager(user);
-//    }
 
 
 }

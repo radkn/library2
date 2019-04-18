@@ -33,8 +33,8 @@ public class UserService  implements UserDetailsService {
         }
 
         user.setRoles(Collections.singleton(Role.USER));
-        /*user.setPassword(passwordEncoder.encode(user.getPassword()));*/
-        user.setActive(false);
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
+        user.setActive(true);
         userRepository.save(user);
 
         return true;
@@ -42,7 +42,8 @@ public class UserService  implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        User user =  userRepository.findByUsername(username);
+        //User user =  userRepository.findByUsername(username);
+        User user =  userRepository.findByEmail(username);
 
         if(user==null){
             throw new UsernameNotFoundException("User not found");

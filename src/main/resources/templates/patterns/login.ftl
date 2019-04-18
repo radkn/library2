@@ -1,6 +1,6 @@
 <#macro login path>
     <form method="post" action="${path}">
-        <input type="text" name="username"/>
+        <input type="email" name="email"/>
         <input type="password" name="password"/>
         <input type="submit" name="Sign In" value="Sign In"/>
         <input type="hidden" name="_csrf" value="${_csrf.token}"/>

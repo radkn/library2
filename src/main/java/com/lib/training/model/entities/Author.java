@@ -18,11 +18,11 @@ public class Author {
     private Integer id;
 
     @Column
-    private String first_name;
+    private String name;
     @Column
     private String second_name;
     @Column
-    private String sur_name;
+    private String surname;
 
 
     @ManyToMany(mappedBy = "authors")

@@ -9,7 +9,7 @@
     <div class="collapse navbar-collapse" id="navbarSupportedcontent">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item">
-                <a class="nav-link" href="/main">Books</a>
+                <a class="nav-link" href="/books">Books</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="/user">User List</a>

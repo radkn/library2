@@ -26,7 +26,7 @@ public class UserService  implements UserDetailsService {
     }
 
     public boolean addUser(User user){
-        User userFromDb = userRepository.findByUsername(user.getUsername());
+        User userFromDb = userRepository.findByEmail(user.getEmail());
 
         if(userFromDb != null){
             return false;

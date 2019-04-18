@@ -2,6 +2,7 @@
 <#import "patterns/login.ftl" as l>
 
 <@c.commonspage>
-    <@l.login "/login"/>
+    ${message!}
+    <@l.login "/login" false/>
     <a href="registration">Add User</a>
 </@c.commonspage>

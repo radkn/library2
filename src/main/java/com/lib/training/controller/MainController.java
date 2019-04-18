@@ -26,26 +26,4 @@ public class MainController {
         return "main";
     }
 
-    @GetMapping("/registration")
-    public String registration(){
-        return "registration";
-    }
-
-    @PostMapping("/registration")
-    public String registration(User user, Model model){
-
-        if(!userService.addUser(user)){
-            model.addAttribute("message", "User already exists!");
-            return "registration";
-        }
-
-        return "redirect:/login";
-    }
-
-    @GetMapping("/profile")
-    public String profile(Model model){
-
-        return "profile";
-    }
-
 }

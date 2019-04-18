@@ -5,6 +5,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 import java.util.Collection;
 import java.util.Set;
 
@@ -17,18 +18,23 @@ public class User implements UserDetails {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
     @Column
-    private String username;
-    @Column
+    @NotBlank(message = "First name cannot be empty!")
     private String first_name;
     @Column
-    private String sur_name;
+    @NotBlank(message = "Surname cannot be empty!")
+    private String surname;
     @Column
     private String second_name;
     @Column
+    @NotBlank(message = "Email cannot be empty!")
     private String email;
     @Column
+    @NotBlank(message = "Password cannot be empty!")
     private String password;
+    @Transient
+    private String password2;
     @Column
+    @NotBlank(message = "Phone cannot be empty!")
     private String phone;
     @Column
     private boolean active;
@@ -38,8 +44,8 @@ public class User implements UserDetails {
     @Enumerated(EnumType.STRING)
     private Set<Role> roles;
 
-//    @OneToOne(mappedBy = "user")
-//    private BookUnit bookUnit;
+    @OneToOne(mappedBy = "user" )
+    private BookUnit bookUnit;
 
 
     public User(){
@@ -53,7 +59,7 @@ public class User implements UserDetails {
 
     @Override
     public String getUsername() {
-        return username;
+        return email;
     }
 
     @Override
